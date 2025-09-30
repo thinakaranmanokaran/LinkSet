@@ -2,13 +2,13 @@
 
 <p align="center">
 <a href="https://thinakaranmanokaran.github.io/LinkSet/" target="_blank">
-  <img src="public/preview.png" alt="LinkSet Preview" width="600">
+  <img src="https://github.com/thinakaranmanokaran/LinkSet/blob/main/client/public/preview.png?raw=true" alt="LinkSet Preview">
   </a>
 </p>
 
 <p align="center">
   <a href="https://thinakaranmanokaran.github.io/LinkSet/" target="_blank">
-    <img src="public/favicon520.png" alt="LinkSet Logo" width="200">
+    <img src="https://github.com/thinakaranmanokaran/LinkSet/blob/main/client/public/favicon280.png?raw=true" alt="LinkSet Logo" width="200">
   </a>
 </p>
 
@@ -36,7 +36,9 @@ LinkSet is a **secure, fast, and user-friendly web application** built with the 
 ## 🚀 Demo
 
 <p align="center">
-  <img src="public/preview2.png" alt="LinkSet Demo" width="600">
+<a href="https://thinakaranmanokaran.github.io/LinkSet/" target="_blank">
+  <img src="https://github.com/thinakaranmanokaran/LinkSet/blob/main/client/public/preview2.png?raw=true" alt="LinkSet Demo">
+  </a>
 </p>
 
 ## 🛠️ Tech Stack

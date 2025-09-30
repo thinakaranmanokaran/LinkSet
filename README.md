@@ -101,6 +101,11 @@ npm start
 * **SEO Friendly:** Meta tags, description, and keywords added for search engines.
 * **Responsive & Fast:** Optimized for both desktop and mobile.
 
+## 📄 License
+
+This project is licensed under the **MIT License**.  
+See the [LICENSE](./LICENSE) file for details.
+
 ## 🌐 Keywords
 
 Temporary link storage, secure link sharing, private URL, password protected link, MERN stack app, React link manager, Node.js backend, Express API, MongoDB TTL, Supabase database, auto-delete links, SEO friendly web app, fast link storage, temporary URL manager, online link vault, secure URL storage, confidential link sharing.

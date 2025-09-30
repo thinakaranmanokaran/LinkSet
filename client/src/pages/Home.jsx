@@ -78,8 +78,8 @@ function Home() {
     };
 
     return (
-        <div className="min-h-screen  flex flex-col items-center py-20 bg-gray-100 p-4 font-inter">
-            <h1 className="text-2xl md:text-4xl font-bold text-center my-4 xl:my-12">Secure Link Store</h1>
+        <div className="h-screen flex flex-col items-center pt-12 md:pt-4  bg-gray-100 p-4 font-inter overflow-hidden">
+            <h1 className="text-3xl md:text-4xl font-bold text-center my-4 mb-6 xl:my-6 xl:mt-16 ">Secure Link Store</h1>
 
             {/* Slide selector */}
             <div className="flex space-x-2 mb-6">

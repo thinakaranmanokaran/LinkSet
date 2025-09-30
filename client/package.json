@@ -1,13 +1,14 @@
 {
-  "name": "client",
+  "name": "link-set",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://thinakaranmanokaran.github.io/LinkSet",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
@@ -26,6 +27,7 @@
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+    "gh-pages": "^6.3.0",
     "globals": "^15.15.0",
     "vite": "^6.2.0"
   }

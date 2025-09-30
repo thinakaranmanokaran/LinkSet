@@ -21,7 +21,7 @@ function Home() {
         setLoading(true);
         setError("");
         try {
-            const res = await axios.post("http://localhost:5000/api/link", { url, password });
+            const res = await axios.post("https://linkset.onrender.com/api/link", { url, password });
             alert(`Link saved with ID: ${res.data.id}`);
             setUrl("");
             setPassword("");
@@ -40,7 +40,7 @@ function Home() {
         setLoading(true);
         setError("");
         try {
-            const res = await axios.post("http://localhost:5000/api/link/get", { password: linkPassword });
+            const res = await axios.post("https://linkset.onrender.com/api/link/get", { password: linkPassword });
             setRetrievedUrl(res.data.url);
             setLinkPassword("");
         } catch (err) {

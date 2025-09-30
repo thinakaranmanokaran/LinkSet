@@ -1,0 +1,9 @@
+# Allow all public pages
+User-agent: *
+Disallow: /api/
+Disallow: /retrieve
+Disallow: /link/*
+Disallow: /password
+
+# Sitemap
+Sitemap: https://thinakaranmanokaran.github.io/LinkSet/sitemap.xml

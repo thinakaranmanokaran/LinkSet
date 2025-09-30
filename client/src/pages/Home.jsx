@@ -22,7 +22,7 @@ function Home() {
         setError("");
         try {
             const res = await axios.post("https://linkset.onrender.com/api/link", { url, password });
-            alert(`Link saved with ID: ${res.data.id}`);
+            alert(`Link saved, It will Expire within 10 mins`);
             setUrl("");
             setPassword("");
         } catch (err) {
@@ -44,6 +44,7 @@ function Home() {
             setRetrievedUrl(res.data.url);
             setLinkPassword("");
         } catch (err) {
+            alert("Link expired or Invalid Password")
             setError(err.response?.data?.error || "Error retrieving link");
             setRetrievedUrl("");
         }
@@ -169,7 +170,7 @@ function Home() {
 
                         {retrievedUrl && (
                             <div className="mt-4 p-4 bg-gray-50 rounded-lg shadow-sm flex flex-col md:flex-row md:items-center md:justify-between space-y-2 md:space-y-0">
-                                <p className="text-blue-600 break-words md:flex-1">{retrievedUrl}</p>
+                                <p className="text-blue-600 truncate break-words md:flex-1  overflow-hidden ">{retrievedUrl}</p>
                                 <div className="flex space-x-2 items-center text-lg">
                                     <button
                                         onClick={handleGoToUrl}
@@ -199,7 +200,7 @@ function Home() {
                 </div>
             </div>
 
-            {error && <p className="text-red-500 mt-4">{error}</p>}
+            {/* {error && <p className="text-red-500 mt-4">{error}</p>} */}
 
             <div className="absolute bottom-4 flex space-x-1 text-gray-700 text-sm md:text-lg">
                 <span>Developed By</span>

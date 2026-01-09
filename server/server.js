@@ -1,3 +1,5 @@
+// server/server.js
+
 // backend/server.js
 const express = require("express");
 const cors = require("cors");
@@ -12,16 +14,32 @@ app.use(express.json());
 // Create a new link (store in Supabase)
 app.post("/api/link", async (req, res) => {
     const { url, password } = req.body;
-    const expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString(); // 10 minutes
+
+    // Special passwords that should NOT expire
+    const noExpiryPasswords = ["261003", "123456"];
+
+    let expiresAt = null;
+
+    // Set expiry only for normal passwords
+    if (!noExpiryPasswords.includes(password)) {
+        expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString(); // 10 minutes
+    }
 
     const { data, error } = await supabase
         .from("links")
         .insert([{ url, password, expires_at: expiresAt }])
         .select();
 
-    if (error) return res.status(500).json({ error: error.message });
+    if (error) {
+        return res.status(500).json({ error: error.message });
+    }
 
-    res.json({ message: "Link saved", id: data[0].id });
+    res.json({
+        message: noExpiryPasswords.includes(password)
+            ? "Permanent link saved"
+            : "Temporary link saved",
+        id: data[0].id,
+    });
 });
 
 // Get link by password
@@ -34,10 +52,12 @@ app.post("/api/link/get", async (req, res) => {
         .eq("password", password)
         .single();
 
-    if (error || !data) return res.status(404).json({ error: "Link not found" });
+    if (error || !data) {
+        return res.status(404).json({ error: "Link not found" });
+    }
 
-    if (new Date(data.expires_at) < new Date()) {
-        // Delete expired link
+    // If expires_at exists, check expiry
+    if (data.expires_at && new Date(data.expires_at) < new Date()) {
         await supabase.from("links").delete().eq("id", data.id);
         return res.status(410).json({ error: "Link expired" });
     }

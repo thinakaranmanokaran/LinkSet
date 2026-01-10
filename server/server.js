@@ -15,14 +15,15 @@ app.use(express.json());
 app.post("/api/link", async (req, res) => {
     const { url, password } = req.body;
 
-    // Special passwords that should NOT expire
     const noExpiryPasswords = ["261003", "123456"];
 
-    let expiresAt = null;
+    let expiresAt;
 
-    // Set expiry only for normal passwords
-    if (!noExpiryPasswords.includes(password)) {
-        expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString(); // 10 minutes
+    if (noExpiryPasswords.includes(password)) {
+        // Far future date (100 years)
+        expiresAt = new Date("2125-01-01").toISOString();
+    } else {
+        expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString();
     }
 
     const { data, error } = await supabase
@@ -31,6 +32,7 @@ app.post("/api/link", async (req, res) => {
         .select();
 
     if (error) {
+        console.error("Supabase insert error:", error);
         return res.status(500).json({ error: error.message });
     }
 
